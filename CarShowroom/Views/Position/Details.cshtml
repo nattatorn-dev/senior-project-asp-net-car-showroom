@@ -1,0 +1,50 @@
+﻿@model CarShowroom.Models.Position
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Stanowisko</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsFullTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFullTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsContract)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsContract)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.PositionId }) |
+    @Html.ActionLink("Powrót", "Index")
+</p>

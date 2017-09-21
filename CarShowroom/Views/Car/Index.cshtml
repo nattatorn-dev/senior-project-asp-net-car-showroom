@@ -1,0 +1,64 @@
+﻿@model PagedList.IPagedList<CarShowroom.Models.Car>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Samochody";
+}
+
+<h2>Samochody</h2>
+
+<p>
+    @Html.ActionLink("Dodaj", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Car", FormMethod.Get))
+{
+    <p>
+        Marka/model: @Html.TextBox("search")
+        <input type="submit" value="Szukaj" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Marka", "Index", new { sort = "brand", filter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Model", "Index", new { sort = "model", filter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Cena", "Index", new { sort = "price", filter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Nowy
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsNew)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.CarId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.CarId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.CarId })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sort = ViewBag.CurrentSort, filter = ViewBag.CurrentFilter }))

@@ -1,0 +1,53 @@
+﻿@model CarShowroom.Models.Purchase
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Sprzedaż</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Car)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Brand)
+            @Html.DisplayFor(model => model.Car.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.FirstName)
+            @Html.DisplayFor(model => model.Client.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.FirstName)
+            @Html.DisplayFor(model => model.Worker.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.PurchaseId }) |
+    @Html.ActionLink("Powrót", "Index")
+</p>

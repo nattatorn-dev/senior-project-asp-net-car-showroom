@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CarShowroom.ViewModels.PurchaseDateGroup>
+
+@{
+    ViewBag.Title = "Statystyka sprzedaży";
+}
+
+<h2>Statystyka sprzedaży</h2>
+
+<table width="300">
+    <tr>
+        <th>
+            Data
+        </th>
+        <th>
+            Ilość sprzedaży
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @item.PurchaseCount
+            </td>
+        </tr>
+    }
+</table>

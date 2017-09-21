@@ -1,0 +1,59 @@
+﻿@model CarShowroom.Models.Purchase
+
+@{
+    ViewBag.Title = "Usuń";
+}
+
+<h2>Usuń</h2>
+
+<h3>Czy na pewno chcesz to usunąć?</h3>
+<div>
+    <h4>Sprzedaż</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Car)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Brand)
+            @Html.DisplayFor(model => model.Car.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.FirstName)
+            @Html.DisplayFor(model => model.Client.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.FirstName)
+            @Html.DisplayFor(model => model.Worker.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót", "Index")
+        </div>
+    }
+</div>
